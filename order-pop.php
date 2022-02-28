@@ -39,7 +39,7 @@ function my_custom_favicon() {
   echo '
     <style>
     .dashicons-sas {
-        background-image: url("'.plugin_dir_path(__FILE__).'/images/60-logo-dashicon.png");
+        background-image: url("'.plugin_dir_url(__FILE__).'/images/60-logo-dashicon.png");
         background-repeat: no-repeat;
         background-position: center; 
     }
