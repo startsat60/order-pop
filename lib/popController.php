@@ -14,12 +14,20 @@ function op_get_order() {
 }
 
 function op_get_orders() {
-
 	$op_options = get_option('op-plugin');
+
 	if (array_key_exists('stop_notifications', $op_options) && $op_options['stop_notifications']) {
 			die();
 	}
     
+	if (array_key_exists('url_exclusions', $op_options) && $op_options['url_exclusions']) {
+		$url = $_POST['url'];
+		$urls = explode("\r\n", trim($op_options['url_exclusions']));
+		if (in_array($url, $urls)) {
+			die();
+		}
+	}
+	
 	$pop_last_order_count = $op_options['pop_last_order_count'];
 	// $initial_date = $op_options['order_query_start_date'] != '' ? $op_options['order_query_start_date'] : '0000-01-01';
 	// $final_date = $op_options['order_query_end_date'] != '' ? $op_options['order_query_end_date'] : date('Y-m-d');
@@ -100,6 +108,8 @@ function op_get_orders() {
 			),
 			'debug' => array(
 				'excluded_categories' => $excluded_categories,
+				'url_exclusions' => $urls,
+				'current_page' => $url,
 			),
 			'products' => $qualifying_products,
 		);
