@@ -24,9 +24,10 @@ if (wp_verify_nonce('order-pop-config-none')) {
 
         <h2 class="op-nav-tab-wrapper">
             <a href="#tab-1" class="nav-tab nav-tab-active">Manage Settings</a>
-            <a href="#tab-2" class="nav-tab">Custom CSS</a>
             <a href="#tab-3" class="nav-tab">Product Categories</a>
-            <a href="#tab-4" class="nav-tab d-none">About</a>
+            <a href="#tab-4" class="nav-tab">URL Exclusions</a>
+            <a href="#tab-2" class="nav-tab">Custom CSS</a>
+            <a href="#tab-10" class="nav-tab d-none">About</a>
         </h2>
     
         <div id="tab-1" class="tab-pane active">
@@ -200,7 +201,20 @@ if (wp_verify_nonce('order-pop-config-none')) {
             </table>
         </div>
 
-        <div id="tab-4" class="tab-pane d-none">
+        <div id="tab-4" class="tab-pane">
+            <h2>Configure URL Exclusions</h2>
+            <p>Specify page URLs that pop should NOT run on.</p>
+            <p>You should use the entire URL as 
+                it appears in the address bar of the browser - eg https://www.my-site.com/dresses/blue/
+                or https://www.my-site.com/. The best idea is browse to the page and copy the URL from
+                the address bar.
+            </p>
+            <p><strong>One URL per line.</strong></p>
+            <textarea name="op-plugin[url_exclusions]" class="form-control"
+                style="height: 50vh"><?php echo $options['url_exclusions']; ?></textarea>
+        </div>
+
+        <div id="tab-10" class="tab-pane d-none">
             <h2>About</h2>
             Steven Woolston<br />
             Woolston Web Design<br />

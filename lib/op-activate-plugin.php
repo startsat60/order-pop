@@ -26,6 +26,7 @@ function op_plugin_activate() {
 		'debug_active' => false,
 		'custom_css' => get_default_css(),
 		'utm_code' => '',
+		'url_exclusions' => '',
 		'excluded_categories' => Array()
 	);
 	
